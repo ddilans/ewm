@@ -257,16 +257,16 @@ static void snap_client(Client *c) {
 		c->y += dy;
 
 	/* snap to screen border */
-	if (abs(c->x - c->border) < opt_snap) c->x = c->border;
-	if (abs(c->y - c->border) < opt_snap) c->y = c->border;
-	if (abs(c->x + c->width + c->border - dpy_width) < opt_snap)
-		c->x = dpy_width - c->width - c->border;
-	if (abs(c->y + c->height + c->border - dpy_height) < opt_snap)
-		c->y = dpy_height - c->height - c->border;
+	if (abs(c->x) < opt_snap) c->x = 0;
+	if (abs(c->y) < opt_snap) c->y = 0;
+	if (abs(c->x + c->width - dpy_width) < opt_snap)
+		c->x = dpy_width - c->width;
+	if (abs(c->y + c->height - dpy_height) < opt_snap)
+		c->y = dpy_height - c->height;
 
-	if (abs(c->x) == c->border && c->width == dpy_width)
+	if (abs(c->x) == 0 && c->width == dpy_width)
 		c->x = 0;
-	if (abs(c->y) == c->border && c->height == dpy_height)
+	if (abs(c->y) == 0 && c->height == dpy_height)
 		c->y = 0;
 }
 

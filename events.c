@@ -108,24 +108,36 @@ static void handle_key_event(XKeyEvent *e) {
 			}
 			goto move_client;
 		case KEY_TOPLEFT:
-			c->x = c->border;
-			c->y = c->border;
+//			c->x = c->border;
+//			c->y = c->border;
+			c->x = 0;
+			c->y = 0;
 			goto move_client;
 		case KEY_TOPRIGHT:
+//			c->x = DisplayWidth(dpy, c->screen->screen)
+//				- c->width-c->border;
+//			c->y = c->border;
 			c->x = DisplayWidth(dpy, c->screen->screen)
-				- c->width-c->border;
-			c->y = c->border;
+				- c->width;
+			c->y = 0;
 			goto move_client;
 		case KEY_BOTTOMLEFT:
-			c->x = c->border;
+//			c->x = c->border;
+//			c->y = DisplayHeight(dpy, c->screen->screen)
+//				- c->height-c->border;
+			c->x = 0;
 			c->y = DisplayHeight(dpy, c->screen->screen)
-				- c->height-c->border;
+				- c->height;
 			goto move_client;
 		case KEY_BOTTOMRIGHT:
+//			c->x = DisplayWidth(dpy, c->screen->screen)
+//				- c->width-c->border;
+//			c->y = DisplayHeight(dpy, c->screen->screen)
+//				- c->height-c->border;
 			c->x = DisplayWidth(dpy, c->screen->screen)
-				- c->width-c->border;
+				- c->width;
 			c->y = DisplayHeight(dpy, c->screen->screen)
-				- c->height-c->border;
+				- c->height;
 			goto move_client;
 		case KEY_KILL:
 			send_wm_delete(c, e->state & altmask);
