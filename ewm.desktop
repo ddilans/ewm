@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=ewm
+Exec=ewm
+NoDisplay=true
+X-GNOME-WMName=ewm
+# ewm doesn't talk XSMP yet, so don't start in the WindowManager phase:
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-Provides=windowmanager
