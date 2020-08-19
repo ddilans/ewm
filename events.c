@@ -7,6 +7,7 @@
 #include <errno.h>
 #include <sys/select.h>
 #include <X11/XKBlib.h>
+#include <X11/XF86keysym.h>
 #include "ewm.h"
 #include "log.h"
 
@@ -35,6 +36,15 @@ static void handle_key_event(XKeyEvent *e) {
 			break;
 		case KEY_LAUNCH:
 			spawn((const char *const *)opt_launch);
+			break;
+		case KEY_VOLUP:
+			spawn((const char *const *)opt_volup);
+			break;
+		case KEY_VOLDOWN:
+			spawn((const char *const *)opt_voldown);
+			break;
+		case KEY_VOLMUTE:
+			spawn((const char *const *)opt_volmute);
 			break;
 		case KEY_NEXT:
 			next();

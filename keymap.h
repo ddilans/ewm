@@ -4,6 +4,9 @@
 #define KEY_NEXT        XK_Tab
 #define KEY_NEW         XK_Return
 #define KEY_LAUNCH	XK_p
+#define KEY_VOLUP	XF86XK_AudioRaiseVolume
+#define KEY_VOLDOWN	XF86XK_AudioLowerVolume
+#define KEY_VOLMUTE	XF86XK_AudioMute
 #define KEY_TOPLEFT     XK_y
 #define KEY_TOPRIGHT    XK_u
 #define KEY_BOTTOMLEFT  XK_b
@@ -16,7 +19,7 @@
 #define KEY_ALTLOWER    XK_KP_Insert
 #define KEY_INFO        XK_i
 #define KEY_MAXVERT     XK_equal
-#define KEY_MAX         XK_x
+#define KEY_MAX         XK_m
 #define KEY_DOCK_TOGGLE XK_d
 #define KEY_FIX        XK_f
 #define KEY_PREVDESK   XK_Left

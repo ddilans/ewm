@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <X11/XF86keysym.h>
 #include "ewm.h"
 #include "log.h"
 
@@ -584,6 +585,7 @@ static KeySym keys_to_grab[] = {
 	XK_1, XK_2, XK_3, XK_4, XK_5, XK_6, XK_7, XK_8,
 #endif
 	KEY_NEW, KEY_LAUNCH, KEY_KILL,
+	KEY_VOLUP, KEY_VOLDOWN, KEY_VOLMUTE,
 	KEY_TOPLEFT, KEY_TOPRIGHT, KEY_BOTTOMLEFT, KEY_BOTTOMRIGHT,
 	KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP,
 	KEY_LOWER, KEY_ALTLOWER, KEY_INFO, KEY_MAXVERT, KEY_MAX,
