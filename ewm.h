@@ -52,6 +52,7 @@ typedef struct {
 #else
 #define DEF_TERM        "xterm"
 #endif
+#define DEF_LAUNCH	"dmenu_run"
 
 /* readability stuff */
 
@@ -214,6 +215,7 @@ extern unsigned int     grabmask1;
 extern unsigned int     grabmask2;
 extern unsigned int     altmask;
 extern char             **opt_term;
+extern char             **opt_launch;
 extern int              opt_bw;
 extern int              opt_snap;
 #ifdef SOLIDDRAG

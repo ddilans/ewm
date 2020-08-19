@@ -44,7 +44,9 @@ unsigned int grabmask1 = Mod4Mask;
 unsigned int grabmask2 = ShiftMask|Mod4Mask;
 unsigned int altmask = ControlMask;
 static const char *const def_term[] = { DEF_TERM, NULL };
+static const char *const def_launch[] = { DEF_LAUNCH, NULL };
 char **opt_term = (char **)def_term;
+char **opt_launch = (char **)def_launch;
 int          opt_bw = DEF_BW;
 int          opt_snap = 0;
 int          no_solid_drag = 0;  /* use solid drag by default */
@@ -80,6 +82,7 @@ static struct xconfig_option ewm_options[] = {
 	{ XCONFIG_STRING,   "fc",           &opt_fc },
 	{ XCONFIG_INT,      "bw",           &opt_bw },
 	{ XCONFIG_STR_LIST, "term",         &opt_term },
+	{ XCONFIG_STR_LIST, "launch",       &opt_launch},
 	{ XCONFIG_INT,      "snap",         &opt_snap },
 	{ XCONFIG_STRING,   "mask1",        &opt_grabmask1 },
 	{ XCONFIG_STRING,   "mask2",        &opt_grabmask2 },
@@ -107,7 +110,7 @@ static unsigned int parse_modifiers(char *s);
 #ifdef STDIO
 static void helptext(void) {
 	puts(
-"usage: ewm [-display display] [-term termprog] [-fn fontname]\n"
+"usage: ewm [-display display] [-term termprog] [-launch launchprog] [-fn fontname]\n"
 "              [-fg foreground] [-fc fixed] [-bg background] [-bw borderwidth]\n"
 "              [-mask1 modifiers] [-mask2 modifiers] [-altmask modifiers]\n"
 "              [-snap num] [-numvdesks num]\n"

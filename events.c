@@ -33,6 +33,9 @@ static void handle_key_event(XKeyEvent *e) {
 		case KEY_NEW:
 			spawn((const char *const *)opt_term);
 			break;
+		case KEY_LAUNCH:
+			spawn((const char *const *)opt_launch);
+			break;
 		case KEY_NEXT:
 			next();
 			if (XGrabKeyboard(dpy, e->root, False, GrabModeAsync, GrabModeAsync, CurrentTime) == GrabSuccess) {
