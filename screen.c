@@ -594,6 +594,9 @@ static KeySym keys_to_grab[] = {
 #define NUM_GRABS (int)(sizeof(keys_to_grab) / sizeof(KeySym))
 
 static KeySym alt_keys_to_grab[] = {
+#ifdef VWM
+	XK_1, XK_2, XK_3, XK_4, XK_5, XK_6, XK_7, XK_8,
+#endif
 	KEY_KILL, KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP,
 	KEY_MAXVERT,
 };

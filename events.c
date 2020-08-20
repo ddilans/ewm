@@ -59,12 +59,16 @@ static void handle_key_event(XKeyEvent *e) {
 			}
 			ewmh_select_client(current);
 			break;
-		case KEY_DOCK_TOGGLE:
-			set_docks_visible(current_screen, !current_screen->docks_visible);
-			break;
 		case XK_1: case XK_2: case XK_3: case XK_4:
 		case XK_5: case XK_6: case XK_7: case XK_8:
+			if (e->state & altmask) {
+			client_to_vdesk(current, KEY_TO_VDESK(key));
+			} else {
 			switch_vdesk(current_screen, KEY_TO_VDESK(key));
+			}
+			break;
+		case KEY_DOCK_TOGGLE:
+			set_docks_visible(current_screen, !current_screen->docks_visible);
 			break;
 		case KEY_PREVDESK:
 			if (current_screen->vdesk > 0) {
