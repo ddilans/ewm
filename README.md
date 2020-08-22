@@ -23,4 +23,4 @@ Mod4+Return to run terminal
 
 Mod4+d to toggle dock
 
-Note when dock enabled there's a 32 pixel gap on the right, edit code to change that
+Note when dock enabled there's a 32 pixel gap on the right, edit code to configure gaps

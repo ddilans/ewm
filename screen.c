@@ -258,17 +258,24 @@ static void snap_client(Client *c) {
 		c->y += dy;
 
 	/* snap to screen border */
-	if (abs(c->x) < opt_snap) c->x = 0;
-	if (abs(c->y) < opt_snap) c->y = 0;
+	if (c->screen->docks_visible) {
+		if (abs(c->x) + LEFTGAP < opt_snap) c->x = LEFTGAP;
+		if (abs(c->y) + TOPGAP < opt_snap) c->y = TOPGAP;
+	} else {
+		if (abs(c->x) < opt_snap) c->x = 0;
+		if (abs(c->y) < opt_snap) c->y = 0;
+	}
 	if (c->screen->docks_visible) {
 		if (abs(c->x + c->width - dpy_width - RIGHTGAP) < opt_snap)
 			c->x = dpy_width - c->width - RIGHTGAP;
+		if (abs(c->y + c->height - dpy_height - BOTTOMGAP) < opt_snap)
+			c->y = dpy_height - c->height - BOTTOMGAP;
 	} else {
 		if (abs(c->x + c->width - dpy_width) < opt_snap)
 			c->x = dpy_width - c->width;
+		if (abs(c->y + c->height - dpy_height) < opt_snap)
+			c->y = dpy_height - c->height;
 	}
-	if (abs(c->y + c->height - dpy_height) < opt_snap)
-		c->y = dpy_height - c->height;
 
 	if (abs(c->x) == 0 && c->width == dpy_width)
 		c->x = 0;
@@ -367,7 +374,11 @@ void maximise_client(Client *c, int action, int hv) {
 				unsigned long props[2];
 				c->oldx = c->x;
 				c->oldw = c->width;
-				c->x = 0;
+				if (c->screen->docks_visible) {
+					c->x = LEFTGAP;
+				} else {
+					c->x = 0;
+				}
 				if (c->screen->docks_visible) {
 					c->width = DisplayWidth(dpy, c->screen->screen) - RIGHTGAP;
 				} else {
@@ -396,8 +407,16 @@ void maximise_client(Client *c, int action, int hv) {
 				unsigned long props[2];
 				c->oldy = c->y;
 				c->oldh = c->height;
-				c->y = 0;
-				c->height = DisplayHeight(dpy, c->screen->screen);
+				if (c->screen->docks_visible) {
+					c->y = TOPGAP;
+				} else {
+					c->y = 0;
+				}
+				if (c->screen->docks_visible) {
+					c->height = DisplayHeight(dpy, c->screen->screen) - BOTTOMGAP;
+				} else {
+					c->height = DisplayHeight(dpy, c->screen->screen);
+				}
 				props[0] = c->oldy;
 				props[1] = c->oldh;
 				XChangeProperty(dpy, c->window, xa_ewm_unmaximised_vert,

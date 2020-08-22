@@ -127,8 +127,13 @@ static void handle_key_event(XKeyEvent *e) {
 		case KEY_TOPLEFT:
 //			c->x = c->border;
 //			c->y = c->border;
-			c->x = 0;
-			c->y = 0;
+			if (c->screen->docks_visible) {
+				c->x = LEFTGAP;
+				c->y = TOPGAP;
+			} else {
+				c->x = 0;
+				c->y = 0;
+			}
 			goto move_client;
 		case KEY_TOPRIGHT:
 //			c->x = DisplayWidth(dpy, c->screen->screen)
@@ -137,19 +142,26 @@ static void handle_key_event(XKeyEvent *e) {
 			if (c->screen->docks_visible) {
 				c->x = DisplayWidth(dpy, c->screen->screen)
 					- c->width - RIGHTGAP;
+				c->y = TOPGAP;
 			} else {
 				c->x = DisplayWidth(dpy, c->screen->screen)
 					- c->width;
+				c->y = 0;
 			}
-			c->y = 0;
 			goto move_client;
 		case KEY_BOTTOMLEFT:
 //			c->x = c->border;
 //			c->y = DisplayHeight(dpy, c->screen->screen)
 //				- c->height-c->border;
-			c->x = 0;
-			c->y = DisplayHeight(dpy, c->screen->screen)
-				- c->height;
+			if (c->screen->docks_visible) {
+				c->x = LEFTGAP;
+				c->y = DisplayHeight(dpy, c->screen->screen)
+					- c->height - BOTTOMGAP;
+			} else {
+				c->x = 0;
+				c->y = DisplayHeight(dpy, c->screen->screen)
+					- c->height;
+			}
 			goto move_client;
 		case KEY_BOTTOMRIGHT:
 //			c->x = DisplayWidth(dpy, c->screen->screen)
@@ -159,12 +171,14 @@ static void handle_key_event(XKeyEvent *e) {
 			if (c->screen->docks_visible) {
 				c->x = DisplayWidth(dpy, c->screen->screen)
 					- c->width - RIGHTGAP;
+				c->y = DisplayHeight(dpy, c->screen->screen)
+					- c->height - BOTTOMGAP;
 			} else {
 				c->x = DisplayWidth(dpy, c->screen->screen)
 					- c->width;
+				c->y = DisplayHeight(dpy, c->screen->screen)
+					- c->height;
 			}
-			c->y = DisplayHeight(dpy, c->screen->screen)
-				- c->height;
 			goto move_client;
 		case KEY_KILL:
 			send_wm_delete(c, e->state & altmask);

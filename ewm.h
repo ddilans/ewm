@@ -57,7 +57,10 @@ typedef struct {
 #define DEF_VOLUP 	"vsan.sh up"
 #define DEF_VOLDOWN	"vsan.sh down"
 #define DEF_VOLMUTE	"vsan.sh mute"
-#define RIGHTGAP	32
+#define RIGHTGAP 32
+#define TOPGAP 0
+#define BOTTOMGAP 0
+#define LEFTGAP 0
 
 /* readability stuff */
 
