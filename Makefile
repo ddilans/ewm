@@ -10,8 +10,6 @@ VPATH=$(src_dir)
 prefix = /usr
 bindir = $(prefix)/bin
 datarootdir = $(prefix)/share
-mandir = $(datarootdir)/man
-man1dir = $(mandir)/man1
 desktopfilesdir = $(datarootdir)/applications
 
 ############################################################################
@@ -126,15 +124,12 @@ ewm$(EXEEXT): $(OBJS)
 install: ewm$(EXEEXT)
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) ewm$(EXEEXT) $(DESTDIR)$(bindir)/
-	$(INSTALL_DIR) $(DESTDIR)$(man1dir)
-	$(INSTALL_FILE) $(src_dir)/ewm.1 $(DESTDIR)$(man1dir)/
 	$(INSTALL_DIR) $(DESTDIR)$(desktopfilesdir)
 	$(INSTALL_FILE) $(src_dir)/ewm.desktop $(DESTDIR)$(desktopfilesdir)/
 
 .PHONY: uninstall
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/ewm$(EXEEXT)
-	rm -f $(DESTDIR)$(man1dir)/ewm.1
 	rm -f $(DESTDIR)$(desktopfilesdir)/ewm.desktop
 
 .PHONY: dist

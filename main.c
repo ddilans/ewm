@@ -53,9 +53,9 @@ char **opt_launch = (char **)def_launch;
 char **opt_volup = (char **)def_volup;
 char **opt_voldown = (char **)def_voldown;
 char **opt_volmute = (char **)def_volmute;
-int          opt_bw = DEF_BW;
-int          opt_snap = 0;
-int          no_solid_drag = 0;  /* use solid drag by default */
+int opt_bw = DEF_BW;
+int opt_snap = 0;
+int no_solid_drag = 0;  /* use solid drag by default */
 struct list  *applications = NULL;
 #ifdef VWM
 unsigned int opt_vdesks = 8;

@@ -3,8 +3,24 @@
 ## Faq
 ### How do i [x]?
 
-read the code
+Read the code mostly, but here's a few more common binds:
 
-### I hit F11 and my browser froze, why?
+Mod4+M to maximized
 
-Browsers issue, not mine(TODO)
+Mod4+[shift]+= to maximize vertically[/horizontally]
+
+Mod4+1-8 to move desktops
+
+Mod4+shift+1-8 to move windows between desktops
+
+Mod4+f to fix a window(sticky)
+
+Mod4+q to close a window
+
+Mod4+p to run launcher
+
+Mod4+Return to run terminal
+
+Mod4+d to toggle dock
+
+Note when dock enabled there's a 32 pixel gap on the right, edit code to change that

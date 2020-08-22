@@ -134,8 +134,13 @@ static void handle_key_event(XKeyEvent *e) {
 //			c->x = DisplayWidth(dpy, c->screen->screen)
 //				- c->width-c->border;
 //			c->y = c->border;
-			c->x = DisplayWidth(dpy, c->screen->screen)
-				- c->width;
+			if (c->screen->docks_visible) {
+				c->x = DisplayWidth(dpy, c->screen->screen)
+					- c->width - RIGHTGAP;
+			} else {
+				c->x = DisplayWidth(dpy, c->screen->screen)
+					- c->width;
+			}
 			c->y = 0;
 			goto move_client;
 		case KEY_BOTTOMLEFT:
@@ -151,8 +156,13 @@ static void handle_key_event(XKeyEvent *e) {
 //				- c->width-c->border;
 //			c->y = DisplayHeight(dpy, c->screen->screen)
 //				- c->height-c->border;
-			c->x = DisplayWidth(dpy, c->screen->screen)
-				- c->width;
+			if (c->screen->docks_visible) {
+				c->x = DisplayWidth(dpy, c->screen->screen)
+					- c->width - RIGHTGAP;
+			} else {
+				c->x = DisplayWidth(dpy, c->screen->screen)
+					- c->width;
+			}
 			c->y = DisplayHeight(dpy, c->screen->screen)
 				- c->height;
 			goto move_client;

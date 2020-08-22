@@ -260,8 +260,13 @@ static void snap_client(Client *c) {
 	/* snap to screen border */
 	if (abs(c->x) < opt_snap) c->x = 0;
 	if (abs(c->y) < opt_snap) c->y = 0;
-	if (abs(c->x + c->width - dpy_width) < opt_snap)
-		c->x = dpy_width - c->width;
+	if (c->screen->docks_visible) {
+		if (abs(c->x + c->width - dpy_width - RIGHTGAP) < opt_snap)
+			c->x = dpy_width - c->width - RIGHTGAP;
+	} else {
+		if (abs(c->x + c->width - dpy_width) < opt_snap)
+			c->x = dpy_width - c->width;
+	}
 	if (abs(c->y + c->height - dpy_height) < opt_snap)
 		c->y = dpy_height - c->height;
 
@@ -363,7 +368,11 @@ void maximise_client(Client *c, int action, int hv) {
 				c->oldx = c->x;
 				c->oldw = c->width;
 				c->x = 0;
-				c->width = DisplayWidth(dpy, c->screen->screen);
+				if (c->screen->docks_visible) {
+					c->width = DisplayWidth(dpy, c->screen->screen) - RIGHTGAP;
+				} else {
+					c->width = DisplayWidth(dpy, c->screen->screen);
+				}
 				props[0] = c->oldx;
 				props[1] = c->oldw;
 				XChangeProperty(dpy, c->window, xa_ewm_unmaximised_horz,
