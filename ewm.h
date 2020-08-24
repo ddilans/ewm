@@ -8,6 +8,7 @@
 #include <X11/Xmd.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
+#include <stdbool.h>
 #ifdef SHAPE
 #include <X11/extensions/shape.h>
 #endif

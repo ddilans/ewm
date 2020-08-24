@@ -1,4 +1,5 @@
 # ewm
+Temporarily suspended, as I attempt to use fvwm again
 
 ## Faq
 ### How do i [x]?
