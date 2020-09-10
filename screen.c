@@ -380,7 +380,7 @@ void maximise_client(Client *c, int action, int hv) {
 					c->x = 0;
 				}
 				if (c->screen->docks_visible) {
-					c->width = DisplayWidth(dpy, c->screen->screen) - RIGHTGAP;
+					c->width = DisplayWidth(dpy, c->screen->screen) - LEFTGAP - RIGHTGAP;
 				} else {
 					c->width = DisplayWidth(dpy, c->screen->screen);
 				}
@@ -413,7 +413,7 @@ void maximise_client(Client *c, int action, int hv) {
 					c->y = 0;
 				}
 				if (c->screen->docks_visible) {
-					c->height = DisplayHeight(dpy, c->screen->screen) - BOTTOMGAP;
+					c->height = DisplayHeight(dpy, c->screen->screen) - TOPGAP - BOTTOMGAP;
 				} else {
 					c->height = DisplayHeight(dpy, c->screen->screen);
 				}
@@ -613,7 +613,6 @@ static KeySym keys_to_grab[] = {
 	XK_1, XK_2, XK_3, XK_4, XK_5, XK_6, XK_7, XK_8,
 #endif
 	KEY_NEW, KEY_LAUNCH, KEY_KILL,
-	KEY_VOLUP, KEY_VOLDOWN, KEY_VOLMUTE,
 	KEY_TOPLEFT, KEY_TOPRIGHT, KEY_BOTTOMLEFT, KEY_BOTTOMRIGHT,
 	KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP,
 	KEY_LOWER, KEY_ALTLOWER, KEY_INFO, KEY_MAXVERT, KEY_MAX,

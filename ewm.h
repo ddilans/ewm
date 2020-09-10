@@ -55,11 +55,8 @@ typedef struct {
 #endif
 #define DEF_LAUNCH	"dmenu_run"
 
-#define DEF_VOLUP 	"vsan.sh up"
-#define DEF_VOLDOWN	"vsan.sh down"
-#define DEF_VOLMUTE	"vsan.sh mute"
-#define RIGHTGAP 32
-#define TOPGAP 0
+#define RIGHTGAP 0
+#define TOPGAP 18
 #define BOTTOMGAP 0
 #define LEFTGAP 0
 
@@ -225,9 +222,6 @@ extern unsigned int     grabmask2;
 extern unsigned int     altmask;
 extern char             **opt_term;
 extern char             **opt_launch;
-extern char             **opt_volup;
-extern char             **opt_voldown;
-extern char             **opt_volmute;
 extern int              opt_bw;
 extern int              opt_snap;
 #ifdef SOLIDDRAG
