@@ -5,7 +5,9 @@
 
 Read the code mostly, but here's a few more common binds:
 
-Mod4+M to maximized
+Mod4+m to maximized
+
+Mod4+m to fill without maximize
 
 Mod4+[shift]+= to maximize vertically[/horizontally]
 

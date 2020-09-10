@@ -17,6 +17,7 @@
 #define KEY_INFO        XK_i
 #define KEY_MAXVERT     XK_equal
 #define KEY_MAX         XK_m
+#define KEY_FILL	XK_e
 #define KEY_DOCK_TOGGLE XK_d
 #define KEY_FIX        XK_f
 #define KEY_PREVDESK   XK_Left

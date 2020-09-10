@@ -430,6 +430,32 @@ void maximise_client(Client *c, int action, int hv) {
 	discard_enter_events(c);
 }
 
+void fill_client(Client *c) {
+if (c->screen->docks_visible) {
+	c->x = LEFTGAP;
+} else {
+	c->x = 0;
+}
+if (c->screen->docks_visible) {
+	c->width = DisplayWidth(dpy, c->screen->screen) - LEFTGAP - RIGHTGAP;
+} else {
+	c->width = DisplayWidth(dpy, c->screen->screen);
+}
+if (c->screen->docks_visible) {
+	c->y = TOPGAP;
+} else {
+	c->y = 0;
+}
+if (c->screen->docks_visible) {
+	c->height = DisplayHeight(dpy, c->screen->screen) - TOPGAP - BOTTOMGAP;
+} else {
+	c->height = DisplayHeight(dpy, c->screen->screen);
+}
+	ewmh_set_net_wm_state(c);
+	moveresizeraise(c);
+	discard_enter_events(c);
+}
+
 void next(void) {
 	struct list *newl = list_find(clients_tab_order, current);
 	Client *newc = current;
@@ -616,7 +642,8 @@ static KeySym keys_to_grab[] = {
 	KEY_TOPLEFT, KEY_TOPRIGHT, KEY_BOTTOMLEFT, KEY_BOTTOMRIGHT,
 	KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP,
 	KEY_LOWER, KEY_ALTLOWER, KEY_INFO, KEY_MAXVERT, KEY_MAX,
-	KEY_DOCK_TOGGLE
+	KEY_DOCK_TOGGLE,
+	KEY_FILL
 };
 #define NUM_GRABS (int)(sizeof(keys_to_grab) / sizeof(KeySym))
 

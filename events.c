@@ -183,6 +183,9 @@ static void handle_key_event(XKeyEvent *e) {
 		case KEY_MAX:
 			maximise_client(c, NET_WM_STATE_TOGGLE, MAXIMISE_HORZ|MAXIMISE_VERT);
 			break;
+		case KEY_FILL:
+			fill_client(c);
+			break;
 		case KEY_MAXVERT:
 			if (e->state & altmask) {
 				maximise_client(c, NET_WM_STATE_TOGGLE, MAXIMISE_HORZ);
