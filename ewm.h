@@ -43,8 +43,8 @@ typedef struct {
 /* default settings */
 
 #define DEF_FONT        "variable"
-#define DEF_FG          "goldenrod"
-#define DEF_BG          "grey50"
+#define DEF_FG          "gray90"
+#define DEF_BG          "black"
 #define DEF_BW          1
 #define DEF_FC          "blue"
 #define SPACE           3
